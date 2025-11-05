@@ -20,6 +20,14 @@ const cats = [{
   owner: 'Pekka',
   image: 'https://loremflickr.com/320/240/cat',
 },
+{
+  cat_id: 3,
+  name: 'Miu',
+  birthdate: '2023-09-02',
+  weight: 5,
+  owner: 'Seppo',
+  image: 'https://loremflickr.com/320/240/cat',
+},
 ];
 
 
@@ -41,10 +49,26 @@ app.get('/api/v1/cats', (req, res) => {
 })
 
 // One cat
-app.get('/api/v1/cats/', (req, res) => {
-  //res.send('Cat API');
-  res.json(cats);
+app.get('/api/v1/cats/:id', (req, res) => {
+
+  const cat = cats.find(cat => cat.cat_id == parseInt(req.params.id));
+
+
+  if (cat) {
+    res.json(cat);
+    console.log('Cat id:', req.params.id);
+    console.log(cat);
+  } else {
+    //res.sendStatus(404);
+    res.status.apply(404).json({
+      "message": 'cat not found'
+    });
+  }
 })
+
+app.post('/api/v1/cats'), (req, res) => {
+  res.sendStatus(201);
+}
 
 
 app.get('/api/test', (request, response) => {
