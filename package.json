@@ -1,12 +1,12 @@
 {
   "name": "js-week3-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Week 3 backend assignments",
   "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

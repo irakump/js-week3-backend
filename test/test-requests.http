@@ -1,19 +1,71 @@
-// Api tests
+# Api http test requests
 
 ### Get cats
 GET http://localhost:3000/api/v1/cats
 
 ### Get cat by id
-GET http://localhost:3000/api/v1/cats/1
+GET http://localhost:3000/api/v1/cats/2
 
 ### Post new cat
 POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
 {
-  "name": "New Cat",
-  "birthdate": "2022-01-01",
-  "weight": 4,
-  "owner": "Owner",
-  "image": "https://loremflickr.com/320/240/cat"
+  "cat_name": 'New cat',
+  "weight": 5,
+  "owner": 3333,
+  "filename": 'f3dbafakjssssf4',
+  "birthdate": '2020-10-12',
 }
+
+### Modify new cat
+PUT http://localhost:3000/api/v1/cats/1
+Content-Type: application/json
+
+{
+  "cat_name": "Frank THE cat",
+  "weight": 5,
+  "owner": 3333,
+  "filename": "f3dbafakjssssf4",
+  "birthdate": "2020-10-12"
+}
+
+### Delete cat by id
+DELETE http://localhost:3000/api/v1/cats/1
+
+
+// User tests
+
+### Get users
+GET http://localhost:3000/api/v1/users
+
+### Get user by id
+GET http://localhost:3000/api/v1/users/2
+
+### Post new user
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "name": 'New User',
+  "username": 'newuser',
+  "email": 'new@metropolia.fi',
+  "role": 'user',
+  "password": 'password1'
+}
+
+### Modify new user
+PUT http://localhost:3000/api/v1/users/1
+Content-Type: application/json
+
+{
+  "name": 'Michael THE Brown',
+  "username": 'mbrown',
+  "email":  'michael@metropolia.fi',
+  "role": ''admin',
+  "password": 'mike456'
+}
+
+### Delete user by id
+DELETE http://localhost:3000/api/v1/users/1
+
