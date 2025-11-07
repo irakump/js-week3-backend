@@ -1,5 +1,6 @@
 import express from 'express';
 import { getUser, getUserById, postUser, putUser, deleteUser } from '../controllers/user-controller.js';
+import { authenticateToken } from '../../middlewares/authentication.js';
 
 // User router
 const userRouter = express.Router();
@@ -9,9 +10,12 @@ console.log('user-routerissa ollaan');
 
 
 // Get all users
-userRouter.route('/').get(getUser).post(postUser);
+//userRouter.route('/').get(getUser).post(postUser);
 
-// Get cat by id
+// Require token to get all users
+userRouter.route('/').get(authenticateToken, getUser).post(postUser);
+
+// Get user by id
 userRouter.route('/:id').get(getUserById).put(putUser).delete(deleteUser);
 
 export default userRouter;

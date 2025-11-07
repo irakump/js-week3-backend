@@ -1,5 +1,8 @@
 # Api http test requests
 
+// TODO: lisää token, ks. mistä se tulee (joku funktio palauttaa sen?)
+@token =
+
 ### Get cats
 GET http://localhost:3000/api/v1/cats
 
@@ -68,23 +71,41 @@ DELETE http://localhost:3000/api/v1/cats/1
 
 ### Get users
 GET http://localhost:3000/api/v1/users
+Authorization: Bearer {{token}}
 
 ### Get user by id
-GET http://localhost:3000/api/v1/users/37
+GET http://localhost:3000/api/v1/users/46
 
-### Post new user
+### Post new user (username needs to be unique)
 POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "New User",
-  "username": "newuser",
+  "name": "User Ulla5",
+  "username": "userulla5",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
 }
 
-### Modify user
+### Post auth/login
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "userulla5",
+  "password": "password1"
+}
+
+### Get my user info
+GET http://localhost:3000/api/v1/auth/me
+Authorization: Bearer {{token}}
+
+### Get my cats
+GET http://localhost:3000/api/v1/cats/user
+Authorization: Bearer {{token}}
+
+### Modify existing user
 PUT http://localhost:3000/api/v1/users/1
 Content-Type: application/json
 
@@ -99,3 +120,5 @@ Content-Type: application/json
 ### Delete user by id
 DELETE http://localhost:3000/api/v1/users/1
 
+### Delete cat by user
+DELETE http://127.0.0.1:3000/api/v1/users/3609

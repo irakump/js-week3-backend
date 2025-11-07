@@ -20,6 +20,17 @@ const findUserById = async (id) => {
      return rows;
 };
 
+const findUserByUsername = async (username) => {
+    const result = await promisePool.execute('SELECT * FROM wsk_users WHERE username = ?', [username]);
+    console.log('result', result);
+    const rows = result[0];
+
+     if (rows.length === 0) {
+        return false;
+     }
+     return rows;
+};
+
 const addUser = async (user) => {
   const {name, username, email, password, role} = user;
   const sql = `INSERT INTO wsk_users (name, username, email, password, role)
@@ -28,6 +39,7 @@ const addUser = async (user) => {
     const result = await promisePool.execute(sql, params);
     const rows = result[0];
     console.log('rows', rows);
+    console.log(user);
      if (rows.affectedRows === 0) {
         return false;
      }
@@ -54,5 +66,5 @@ const removeUser = async (id) => {
      return {message: 'success'};
 };
 
-export {listAllUsers, findUserById, addUser, modifyUser, removeUser};
+export {listAllUsers, findUserById, findUserByUsername, addUser, modifyUser, removeUser};
 
