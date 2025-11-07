@@ -29,19 +29,21 @@ const addCat = async (cat) => {
                VALUES (?, ?, ?, ?, ?)`;
   const params = [cat_name, weight, owner, filename, birthdate];
     const result = await promisePool.execute(sql, params);
-    console.log('rows', result);
-     if (result[0].affectedRows === 0) {
+    const rows = result[0];
+    console.log('result', result);
+     if (rows.affectedRows === 0) {
         return false;
      }
-    return {cat_id: result[0].insertId};
+    return {cat_id: rows.insertId};
 };
 
 // TODO: tee nämä valmiiksi (cat-controlleriin?)
 const modifyCat = async (cat, id) => {
   const sql = promisePool.format(`UPDATE wsk_cats SET ? WHERE cat_id = ?`, [cat, id]);
-    const rows = await promisePool.execute(sql);
+    const result = await promisePool.execute(sql);
+    const rows = result[0];
     console.log('rows', rows);
-     if (rows[0].affectedRows === 0) {
+     if (rows.affectedRows === 0) {
         return false;
      }
      return {message: 'success'};

@@ -70,7 +70,7 @@ DELETE http://localhost:3000/api/v1/cats/1
 GET http://localhost:3000/api/v1/users
 
 ### Get user by id
-GET http://localhost:3000/api/v1/users/2
+GET http://localhost:3000/api/v1/users/37
 
 ### Post new user
 POST http://localhost:3000/api/v1/users
