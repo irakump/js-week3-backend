@@ -16,9 +16,9 @@ const getCatById = async (req, res) => {
 
 // Post cat
 const postCat = async (req, res) => {
-  console.log(req.body);
-  console.log(req.file);
-  console.log(req.file.filename);
+  console.log('req.body =', req.body);
+  console.log('req.file =', req.file);
+  console.log('req.file.filename=', req.file.filename);
 
   // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
   req.body.filename = req.file.filename;
