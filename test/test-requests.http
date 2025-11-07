@@ -39,10 +39,10 @@ Content-Disposition: form-data; name="birthdate"
 
 2023-10-08
 --MyBoundary
-Content-Disposition: form-data; name="file"; filename="closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg"
+Content-Disposition: form-data; name="file"; filename="cat.jpg"
 Content-Type: image/jpg
 
-< ./closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg
+< ./cat.jpg
 --MyBoundary--
 
 
