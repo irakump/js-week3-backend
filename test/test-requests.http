@@ -4,16 +4,17 @@
 GET http://localhost:3000/api/v1/cats
 
 ### Get cat by id
-GET http://localhost:3000/api/v1/cats/2
+GET http://localhost:3000/api/v1/cats/41
 
 ### Post new cat
 POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
+// owner pitää olla olemassa (eli olemassa oleva user)
 {
   "cat_name": "New cat",
   "weight": 5,
-  "owner": 3333,
+  "owner": 37,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }
@@ -39,10 +40,10 @@ Content-Disposition: form-data; name="birthdate"
 
 2023-10-08
 --MyBoundary
-Content-Disposition: form-data; name="file"; filename="closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg"
+Content-Disposition: form-data; name="file"; filename="cat.jpg"
 Content-Type: image/jpg
 
-< ./closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg
+< ./cat.jpg
 --MyBoundary--
 
 
@@ -54,7 +55,7 @@ Content-Type: application/json
 {
   "cat_name": "Frank THE cat",
   "weight": 5,
-  "owner": 3333,
+  "owner": 37,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }

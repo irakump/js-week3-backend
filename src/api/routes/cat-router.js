@@ -11,8 +11,6 @@ import {
 import multer from 'multer';
 const upload = multer({ dest: 'uploads/' });
 
-
-
 // Cat router
 const catRouter = express.Router();
 
