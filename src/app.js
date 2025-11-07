@@ -3,7 +3,6 @@ import api from './api/index.js';
 
 const app = express();
 
-
 // Web sivusto avautuu public-kansiosta (juuresta), ylin reitti avautuu
 app.use(express.static('public'));
 
@@ -16,17 +15,20 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/v1', api);
 
 
-// API-polun juuri
-app.get('/api/v1', (req, res) => {
-  res.send('Welcome to my REST API');
-})
-
-
-
-
-app.post('/api/v1/cats', (req, res) => {
-  // TODO: add posted cat to data
-  res.sendStatus(201);
-});
+// Yksinkertainen middleware
+app.get('/example/middleware',
+  (req, res, next) => {
+    console.log('Moi olen täällä 1');
+    next(); // Seuraava funktio
+},
+(req, res, next) => {
+    console.log('Olen middleware ja käsittelen dataa');
+    next(); // Seuraava funktio
+},
+(req, res, next) => {
+    console.log('Moikka, pääsin loppuun asti');
+    res.send('Tiedosto upattu ja käsitelty'); // Lähettää clientille tekstin
+}
+);
 
 export default app;

@@ -16,6 +16,13 @@ const getCatById = (req, res) => {
 
 // Post cat
 const postCat = (req, res) => {
+  console.log(req.body);
+  //console.log(req.file);
+  //console.log(req.file.filename);
+
+  // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
+  req.body.filename = req.file.filename;
+
   const result = addCat(req.body);
   if (result.cat_id) {
     res.status(201);

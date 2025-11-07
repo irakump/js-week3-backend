@@ -11,14 +11,43 @@ POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
 {
-  "cat_name": 'New cat',
+  "cat_name": "New cat",
   "weight": 5,
   "owner": 3333,
-  "filename": 'f3dbafakjssssf4',
-  "birthdate": '2020-10-12',
+  "filename": "f3dbafakjssssf4",
+  "birthdate": "2020-10-12"
 }
 
-### Modify new cat
+### Post new cat with image
+POST http://127.0.0.1:3000/api/v1/cats HTTP/1.1
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="cat_name"
+
+Misu
+--MyBoundary
+Content-Disposition: form-data; name="weight"
+
+6
+--MyBoundary
+Content-Disposition: form-data; name="owner"
+
+3602
+--MyBoundary
+Content-Disposition: form-data; name="birthdate"
+
+2023-10-08
+--MyBoundary
+Content-Disposition: form-data; name="file"; filename="closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg"
+Content-Type: image/jpg
+
+< ./closeup-shot-kitten-with-its-tongue-out-isolated-white-wall.jpg
+--MyBoundary--
+
+
+
+### Modify cat
 PUT http://localhost:3000/api/v1/cats/1
 Content-Type: application/json
 
@@ -47,23 +76,23 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": 'New User',
-  "username": 'newuser',
-  "email": 'new@metropolia.fi',
-  "role": 'user',
-  "password": 'password1'
+  "name": "New User",
+  "username": "newuser",
+  "email": "new@metropolia.fi",
+  "role": "user",
+  "password": "password1"
 }
 
-### Modify new user
+### Modify user
 PUT http://localhost:3000/api/v1/users/1
 Content-Type: application/json
 
 {
-  "name": 'Michael THE Brown',
-  "username": 'mbrown',
-  "email":  'michael@metropolia.fi',
-  "role": ''admin',
-  "password": 'mike456'
+  "name": "Michael THE Brown",
+  "username": "mbrown",
+  "email":  "michael@metropolia.fi",
+  "role": "admin",
+  "password": "mike456"
 }
 
 ### Delete user by id
