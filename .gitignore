@@ -2,3 +2,9 @@
 .idea
 node_modules/
 .DS_Store
+
+!uploads/.gitkeep
+
+.env
+
+database/create-user.sql
