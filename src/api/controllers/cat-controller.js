@@ -16,14 +16,21 @@ const getCatById = (req, res) => {
 
 // Post cat
 const postCat = (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   //console.log(req.file);
   //console.log(req.file.filename);
 
-  // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
-  req.body.filename = req.file.filename;
+  // Salli kissan lisäys ilman kuvaa
+  const newCat = req.body;
 
-  const result = addCat(req.body);
+  if (req.file) {
+    newCat.filename = req.file.filename; // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
+  } else if (!newCat.filename) {
+    newCat.filename = null;
+  }
+
+  const result = addCat(newCat);
+
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});

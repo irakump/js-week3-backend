@@ -11,10 +11,9 @@ POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
 {
-  "cat_name": "New cat",
-  "cat_name": "New cat",
+  "cat_name": "Mirri",
   "weight": 5,
-  "owner": 3333,
+  "owner": 3,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }
@@ -55,7 +54,7 @@ Content-Type: application/json
 {
   "cat_name": "Frank THE cat",
   "weight": 8,
-  "owner": 3333,
+  "owner": 3,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }
@@ -77,11 +76,6 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "New User",
-  "username": "newuser",
-  "email": "new@metropolia.fi",
-  "role": "user",
-  "password": "password1"
   "name": "New User",
   "username": "newuser",
   "email": "new@metropolia.fi",
