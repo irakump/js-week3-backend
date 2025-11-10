@@ -12,6 +12,7 @@ Content-Type: application/json
 
 {
   "cat_name": "New cat",
+  "cat_name": "New cat",
   "weight": 5,
   "owner": 3333,
   "filename": "f3dbafakjssssf4",
@@ -53,7 +54,7 @@ Content-Type: application/json
 
 {
   "cat_name": "Frank THE cat",
-  "weight": 5,
+  "weight": 8,
   "owner": 3333,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
@@ -81,6 +82,11 @@ Content-Type: application/json
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
+  "name": "New User",
+  "username": "newuser",
+  "email": "new@metropolia.fi",
+  "role": "user",
+  "password": "password1"
 }
 
 ### Modify user
@@ -97,4 +103,3 @@ Content-Type: application/json
 
 ### Delete user by id
 DELETE http://localhost:3000/api/v1/users/1
-
