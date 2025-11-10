@@ -11,11 +11,11 @@ POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
 {
-  "cat_name": 'New cat',
+  "cat_name": "New cat",
   "weight": 5,
-  "owner": 3333,
-  "filename": 'f3dbafakjssssf4',
-  "birthdate": '2020-10-12',
+  "owner": 37,
+  "filename": "f3dbafakjssssf4",
+  "birthdate": "2020-10-12"
 }
 
 ### Modify new cat
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "cat_name": "Frank THE cat",
-  "weight": 5,
+  "weight": 8,
   "owner": 3333,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
@@ -47,11 +47,11 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": 'New User',
-  "username": 'newuser',
-  "email": 'new@metropolia.fi',
-  "role": 'user',
-  "password": 'password1'
+  "name": "New User",
+  "username": "newuser",
+  "email": "new@metropolia.fi",
+  "role": "user",
+  "password": "password1"
 }
 
 ### Modify new user
@@ -59,13 +59,12 @@ PUT http://localhost:3000/api/v1/users/1
 Content-Type: application/json
 
 {
-  "name": 'Michael THE Brown',
-  "username": 'mbrown',
-  "email":  'michael@metropolia.fi',
-  "role": ''admin',
-  "password": 'mike456'
+  "name": "Michael THE Brown",
+  "username": "mbrown",
+  "email": "michael@metropolia.fi",
+  "role": "admin",
+  "password": "mike456"
 }
 
 ### Delete user by id
 DELETE http://localhost:3000/api/v1/users/1
-

@@ -1,16 +1,14 @@
 import express from 'express';
-import { getCat, getCatById, postCat, putCat, deleteCat } from '../controllers/cat-controller.js';
+import {
+  getCat,
+  getCatById,
+  postCat,
+  putCat,
+  deleteCat,
+} from '../controllers/cat-controller.js';
 
 // Cat router
 const catRouter = express.Router();
-
-// Testaus pääseekö routeriin
-console.log('cat-routerissa ollaan');
-
-// Cats endpoints
-//catRouter.get('/', (req, res) => {
-//  res.json(cats);
-//})
 
 // Get all cats
 catRouter.route('/').get(getCat).post(postCat);

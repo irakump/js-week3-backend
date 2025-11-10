@@ -1,7 +1,7 @@
-// mock data
+// Mock data
 const userItems = [
   {
-    user_id: 1,
+    user_id: 3,
     name: 'John Doe',
     username: 'johndoe',
     email: 'john@metropolia.fi',
@@ -17,7 +17,7 @@ const userItems = [
     password: 'mike456',
   },
   {
-    user_id: 3,
+    user_id: 1,
     name: 'Jane Smith',
     username: 'janesmith',
     email: 'jane@metropolia.fi',
@@ -36,7 +36,7 @@ const findUserById = (id) => {
 
 const addUser = (user) => {
   const {name, username, email, role, password} = user;
-  const newId = userItems.length + 1; // tämä pitäisi tulla tietokannasta (auto incerement)
+  const newId = userItems[0].user_id + 1; // tämä pitäisi tulla tietokannasta (auto incerement)
   userItems.unshift({
     user_id: newId,
     name,

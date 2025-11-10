@@ -1,4 +1,4 @@
-import { listAllCats, findCatById, addCat } from "../models/cat-model.js";   // muista .js-pääte
+import {listAllCats, findCatById, addCat} from '../models/cat-model.js';
 
 const getCat = (req, res) => {
   res.json(listAllCats());
@@ -25,18 +25,16 @@ const postCat = (req, res) => {
   }
 };
 
-
 const putCat = (req, res) => {
-  // not implemented in this example, this is future homework
+  // not implemented in this assignment (will be done later)
   res.status(200);
   res.json({message: 'Cat item updated.'});
 };
 
 const deleteCat = (req, res) => {
-  // not implemented in this example, this is future homework
+  // not implemented in this assignment (will be done later)
   res.status(200);
   res.json({message: 'Cat item deleted.'});
 };
-
 
 export {getCat, getCatById, postCat, putCat, deleteCat};
