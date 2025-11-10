@@ -1,4 +1,4 @@
-import { listAllCats, findCatById, addCat } from "../models/cat-model.js";   // muista .js-pääte
+import {listAllCats, findCatById, addCat} from '../models/cat-model.js';
 
 const getCat = async (req, res) => {
   res.json(await listAllCats());
@@ -20,8 +20,14 @@ const postCat = async (req, res) => {
   console.log('req.file =', req.file);
   console.log('req.file.filename=', req.file.filename);
 
-  // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
-  req.body.filename = req.file.filename;
+  // Salli kissan lisäys ilman kuvaa
+  const newCat = req.body;
+
+  if (req.file) {
+    newCat.filename = req.file.filename; // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
+  } else if (!newCat.filename) {
+    newCat.filename = null;
+  }
 
   const result = await addCat(req.body);
   if (result.cat_id) {
@@ -31,7 +37,6 @@ const postCat = async (req, res) => {
     res.sendStatus(400);
   }
 };
-
 
 const putCat = async (req, res) => {
   // not implemented in this example, this is future homework -> lisää await ja kutsu kissan lisäyksen funktiota (cat-modelissa)
@@ -44,6 +49,5 @@ const deleteCat = async (req, res) => {
   res.status(200);
   res.json({message: 'Cat item deleted.'});
 };
-
 
 export {getCat, getCatById, postCat, putCat, deleteCat};

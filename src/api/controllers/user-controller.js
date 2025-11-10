@@ -1,4 +1,4 @@
-import { listAllUsers, findUserById, addUser } from "../models/user-model.js";   // muista .js-pääte
+import {listAllUsers, findUserById, addUser} from '../models/user-model.js';
 
 const getUser = async (req, res) => {
   res.json(await listAllUsers());
@@ -25,19 +25,20 @@ const postUser = async (req, res) => {
   }
 };
 
-
 const putUser = async (req, res) => {
   // not implemented in this example, this is future homework
+const putUser = (req, res) => {
+  // not implemented in this assignment
   res.status(200);
   res.json({message: 'User item updated.'});
 };
 
 const deleteUser = async (req, res) => {
   // not implemented in this example, this is future homework
+const deleteUser = (req, res) => {
+  // not implemented in this assignment
   res.status(200);
   res.json({message: 'User item deleted.'});
 };
 
-
-export { getUser, getUserById, postUser, putUser, deleteUser };
-
+export {getUser, getUserById, postUser, putUser, deleteUser};

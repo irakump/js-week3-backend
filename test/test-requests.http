@@ -12,7 +12,7 @@ Content-Type: application/json
 
 // owner pitää olla olemassa (eli olemassa oleva user)
 {
-  "cat_name": "New cat",
+  "cat_name": "Mirri",
   "weight": 5,
   "owner": 37,
   "filename": "f3dbafakjssssf4",
@@ -98,4 +98,3 @@ Content-Type: application/json
 
 ### Delete user by id
 DELETE http://localhost:3000/api/v1/users/1
-

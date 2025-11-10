@@ -58,4 +58,5 @@ const removeCat = async (id) => {
      return {message: 'success'};
 };
 
+
 export {listAllCats, findCatById, addCat, modifyCat, removeCat};
