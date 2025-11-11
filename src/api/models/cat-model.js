@@ -66,7 +66,6 @@ const addCat = async (cat) => {
         return false;
      }
     return {cat_id: rows.insertId};
-    //return cat;
 };
 
 const modifyCat = async (cat, id) => {
@@ -87,7 +86,7 @@ const removeCat = async (id) => {
      if (rows.affectedRows === 0) {
         return false;
      }
-     return {message: `Cat ${id} deleted`};
+     return {cat_id: id};
 };
 
 export {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat};

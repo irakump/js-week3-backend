@@ -71,9 +71,16 @@ const putCat = async (req, res) => {
 
 // Delete cat
 const deleteCat = async (req, res) => {
-  // not implemented in this example, this is future homework
-  res.status(200);
-  res.json({message: 'Cat item deleted.'});
+
+  const result = await removeCat(req.params.id);
+
+  if (result) {
+      res.status(201);
+    res.json({message: 'Cat item deleted.', result});
+    } else {
+    res.sendStatus(400);
+  }
+
 };
 
 export {getCat, getCatById, getCatsByUserId, postCat, putCat, deleteCat};
