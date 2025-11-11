@@ -30,7 +30,7 @@ const addCat = async (cat) => {
   const params = [cat_name, weight, owner, filename, birthdate];
     const result = await promisePool.execute(sql, params);
     const rows = result[0];
-    console.log('result', result);
+    console.log('rows', rows);
      if (rows.affectedRows === 0) {
         return false;
      }

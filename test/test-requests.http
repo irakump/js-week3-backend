@@ -6,7 +6,7 @@ GET http://localhost:3000/api/v1/cats
 ### Get cat by id
 GET http://localhost:3000/api/v1/cats/41
 
-### Post new cat
+### Post new cat without image
 POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
@@ -26,7 +26,7 @@ Content-Type: multipart/form-data; boundary=MyBoundary
 --MyBoundary
 Content-Disposition: form-data; name="cat_name"
 
-Misu
+Muu
 --MyBoundary
 Content-Disposition: form-data; name="weight"
 
@@ -49,11 +49,11 @@ Content-Type: image/jpg
 
 
 ### Modify cat
-PUT http://localhost:3000/api/v1/cats/1
+PUT http://localhost:3000/api/v1/cats/41
 Content-Type: application/json
 
 {
-  "cat_name": "Frank THE cat",
+  "cat_name": "Siiri THE cat",
   "weight": 5,
   "owner": 37,
   "filename": "f3dbafakjssssf4",
@@ -77,8 +77,8 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "New User",
-  "username": "newuser",
+  "name": "Joku",
+  "username": "joku",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
