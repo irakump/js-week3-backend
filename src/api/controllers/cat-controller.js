@@ -1,10 +1,4 @@
 import {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat} from '../models/cat-model.js';
-import {
-  listAllCats,
-  findCatById,
-  addCat,
-  listCatsByUserId,
-} from '../models/cat-model.js'; // muista .js-pääte
 
 const getCat = async (req, res) => {
   const cats = await listAllCats()
@@ -26,10 +20,17 @@ const getMyCats = async (req, res) => {
   res.json(cats);
 };
 
+// Get cats by user id
 const getCatsByUserId = async (req, res) => {
-  const cats = await listCatsByUserId(req.params.id);
-  res.json(cats);
-};
+  const cats = await findCatsByUserId(req.params.userId);
+
+  if (cats) {
+    res.json(cats);
+  } else {
+    res.sendStatus(404);
+  }
+
+}
 
 // Get cat by id
 const getCatById = async (req, res) => {
@@ -64,42 +65,6 @@ const postCat = async (req, res) => {
   }
 };
 */
-
-/*
-// Post cat
-const postCat = async (req, res) => {
-  //console.log('req.body =', req.//body);
-  //console.log('req.file =', req.//file);
-  //console.log('req.file.filename=', //req.file.filename);
-
-  // Allow cat without image
-  req.body.filename = req.file ? req.file.filename : req.body.filename || null;
-
-
-  // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
-  //req.body.filename = req.file.filename;
-
-  const result = await addCat(req.body);
-  if (result.cat_id) {
-    res.status(201);
-    res.json({message: 'New cat added.', result});
-  } else {
-    res.sendStatus(400);
-  }
-};
-*/
-
-// Get cats by user id
-const getCatsByUserId = async (req, res) => {
-  const cats = await findCatsByUserId(req.params.userId);
-
-  if (cats) {
-    res.json(cats);
-  } else {
-    res.sendStatus(404);
-  }
-
-}
 
 // Post new cat
 const postCat = async (req, res) => {
