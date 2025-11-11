@@ -65,20 +65,20 @@ const addCat = async (cat) => {
      if (rows.affectedRows === 0) {
         return false;
      }
-    //return {cat_id: rows.insertId};
-    return cat;
+    return {cat_id: rows.insertId};
+    //return cat;
 };
 
-// TODO: tee nämä valmiiksi (cat-controlleriin?)
 const modifyCat = async (cat, id) => {
   const sql = promisePool.format(`UPDATE wsk_cats SET ? WHERE cat_id = ?`, [cat, id]);
     const result = await promisePool.execute(sql);
     const rows = result[0];
     console.log('rows', rows);
+
      if (rows.affectedRows === 0) {
         return false;
      }
-     return {message: 'success'};
+     return {cat_id: id};
 };
 
 const removeCat = async (id) => {
@@ -87,7 +87,7 @@ const removeCat = async (id) => {
      if (rows.affectedRows === 0) {
         return false;
      }
-     return {message: 'success'};
+     return {message: `Cat ${id} deleted`};
 };
 
 export {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat};

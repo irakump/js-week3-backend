@@ -49,14 +49,12 @@ Content-Type: image/jpg
 < ./cat.jpg
 --MyBoundary--
 
-
-
 ### Modify cat
 PUT http://localhost:3000/api/v1/cats/41
 Content-Type: application/json
 
 {
-  "cat_name": "Siiri THE cat",
+  "cat_name": "Siiri THE Super cat",
   "weight": 5,
   "owner": 37,
   "filename": "f3dbafakjssssf4",

@@ -1,4 +1,4 @@
-import {listAllCats, findCatById, findCatsByUserId, addCat} from '../models/cat-model.js';
+import {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat} from '../models/cat-model.js';
 
 const getCat = async (req, res) => {
   const cats = await listAllCats()
@@ -27,7 +27,7 @@ const getCatsByUserId = async (req, res) => {
 
 }
 
-// Post cat
+// Post new cat
 const postCat = async (req, res) => {
   console.log('req.body =', req.body);
   console.log('req.file =', req.file);
@@ -45,7 +45,6 @@ const postCat = async (req, res) => {
     newCat.filename = req.file.filename; // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
   } else if (!newCat.filename) {
     newCat.filename = null;
-    //newCat.filename = 'noFile';
   }
 
   const result = await addCat(req.body);
@@ -57,12 +56,20 @@ const postCat = async (req, res) => {
   }
 };
 
+// Modify cat
 const putCat = async (req, res) => {
-  // not implemented in this example, this is future homework -> lisää await ja kutsu kissan lisäyksen funktiota (cat-modelissa)
-  res.status(200);
-  res.json({message: 'Cat item updated.'});
+
+  const result = await modifyCat(req.body, req.params.id);
+    if (result) {
+      res.status(201);
+    res.json({message: 'Cat item updated.', result});
+    } else {
+    res.sendStatus(400);
+  }
+
 };
 
+// Delete cat
 const deleteCat = async (req, res) => {
   // not implemented in this example, this is future homework
   res.status(200);
