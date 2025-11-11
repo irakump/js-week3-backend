@@ -86,12 +86,12 @@ Content-Type: application/json
 }
 
 ### Modify user
-PUT http://localhost:3000/api/v1/users/1
+PUT http://localhost:3000/api/v1/users/39
 Content-Type: application/json
 
 {
-  "name": "Michael THE Brown",
-  "username": "mbrown",
+  "name": "Joku THE User",
+  "username": "joku",
   "email":  "michael@metropolia.fi",
   "role": "admin",
   "password": "mike456"

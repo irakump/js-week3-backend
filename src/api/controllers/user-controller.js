@@ -1,4 +1,4 @@
-import {listAllUsers, findUserById, addUser} from '../models/user-model.js';
+import {listAllUsers, findUserById, addUser, modifyUser, removeUser} from '../models/user-model.js';
 
 const getUser = async (req, res) => {
   res.json(await listAllUsers());
@@ -25,13 +25,21 @@ const postUser = async (req, res) => {
   }
 };
 
-const putUser = (req, res) => {
-  // not implemented in this assignment
-  res.status(200);
-  res.json({message: 'User item updated.'});
+// Modify user
+const putUser = async (req, res) => {
+
+  const result = await modifyUser(req.body, req.params.id);
+
+  if (result) {
+    res.status(201);
+    res.json({message: 'User item updated.', result});
+  } else {
+    res.sendStatus(400);
+  }
+
 };
 
-
+// Delete user
 const deleteUser = (req, res) => {
   // not implemented in this assignment
   res.status(200);

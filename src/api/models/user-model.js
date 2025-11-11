@@ -1,5 +1,3 @@
-// TODO: muokkaa nämä vastaamaan user-db:tä, poista ylemmät tekstit
-
 import promisePool from '../../utils/database.js';
 
 const listAllUsers = async () => {
@@ -38,20 +36,24 @@ const modifyUser = async (user, id) => {
   const sql = promisePool.format(`UPDATE wsk_users SET ? WHERE user_id = ?`, [user, id]);
     const result = await promisePool.execute(sql);
     const rows = result[0];
+
     console.log('rows', rows);
-     if (rows[0].affectedRows === 0) {
+     if (rows.affectedRows === 0) {
         return false;
      }
-     return {message: 'success'};
+
+     return {user_id: id};
 };
 
 const removeUser = async (id) => {
     const [rows] = await promisePool.execute('DELETE FROM wsk_cats WHERE cat_id = ?', [id]);
     console.log('rows', rows);
+
      if (rows.affectedRows === 0) {
         return false;
      }
-     return {message: 'success'};
+
+     return {user_id: id};
 };
 
 export {listAllUsers, findUserById, addUser, modifyUser, removeUser};
