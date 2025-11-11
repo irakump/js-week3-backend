@@ -25,16 +25,13 @@ const postUser = async (req, res) => {
   }
 };
 
-const putUser = async (req, res) => {
-  // not implemented in this example, this is future homework
 const putUser = (req, res) => {
   // not implemented in this assignment
   res.status(200);
   res.json({message: 'User item updated.'});
 };
 
-const deleteUser = async (req, res) => {
-  // not implemented in this example, this is future homework
+
 const deleteUser = (req, res) => {
   // not implemented in this assignment
   res.status(200);
