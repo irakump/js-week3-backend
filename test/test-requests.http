@@ -9,13 +9,16 @@ GET http://localhost:3000/api/v1/cats
 ### Get cat by id
 GET http://localhost:3000/api/v1/cats/41
 
-### Post new cat
+### Get cats by user id
+GET http://localhost:3000/api/v1/cats/user/37
+
+### Post new cat without image
 POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
 
 // owner pitää olla olemassa (eli olemassa oleva user)
 {
-  "cat_name": "New cat",
+  "cat_name": "Mirri",
   "weight": 5,
   "owner": 37,
   "filename": "f3dbafakjssssf4",
@@ -29,7 +32,7 @@ Content-Type: multipart/form-data; boundary=MyBoundary
 --MyBoundary
 Content-Disposition: form-data; name="cat_name"
 
-Misu
+Kissa Kissanen
 --MyBoundary
 Content-Disposition: form-data; name="weight"
 
@@ -37,7 +40,7 @@ Content-Disposition: form-data; name="weight"
 --MyBoundary
 Content-Disposition: form-data; name="owner"
 
-37
+1
 --MyBoundary
 Content-Disposition: form-data; name="birthdate"
 
@@ -49,14 +52,12 @@ Content-Type: image/jpg
 < ./cat.jpg
 --MyBoundary--
 
-
-
 ### Modify cat
-PUT http://localhost:3000/api/v1/cats/1
+PUT http://localhost:3000/api/v1/cats/41
 Content-Type: application/json
 
 {
-  "cat_name": "Frank THE cat",
+  "cat_name": "Siiri THE Super cat",
   "weight": 5,
   "owner": 37,
   "filename": "f3dbafakjssssf4",
@@ -64,7 +65,7 @@ Content-Type: application/json
 }
 
 ### Delete cat by id
-DELETE http://localhost:3000/api/v1/cats/1
+DELETE http://localhost:3000/api/v1/cats/61
 
 
 // User tests
@@ -81,8 +82,8 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "User Ulla5",
-  "username": "userulla5",
+  "name": "Joku",
+  "username": "joku1",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
@@ -110,8 +111,8 @@ PUT http://localhost:3000/api/v1/users/1
 Content-Type: application/json
 
 {
-  "name": "Michael THE Brown",
-  "username": "mbrown",
+  "name": "Joku THE User",
+  "username": "joku",
   "email":  "michael@metropolia.fi",
   "role": "admin",
   "password": "mike456"

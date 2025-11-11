@@ -2,6 +2,7 @@ import express from 'express';
 import {
   getCat,
   getCatById,
+  getCatsByUserId,
   postCat,
   putCat,
   deleteCat,
@@ -18,14 +19,12 @@ import {authenticateToken} from '../../middlewares/authentication.js'
 // Cat router
 const catRouter = express.Router();
 
-// Testaus pääseekö routeriin
-console.log('cat-routerissa ollaan');
-
 // Upload image
 catRouter.route('/').get(getCat).post(upload.single('file'), postCat);
 
 // Post cat without image
-//catRouter.route('/').get(getCat).post(postCat);
+// Get cats by user id (all cats owned by user)
+catRouter.route('/user/:userId').get(getCatsByUserId).delete(deleteCat);
 
 // Get own cats
 catRouter.route('/user').get(authenticateToken, getMyCats());
