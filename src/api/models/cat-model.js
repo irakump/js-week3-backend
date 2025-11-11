@@ -8,18 +8,42 @@ import promisePool from '../../utils/database.js';
 
 const listAllCats = async () => {
     const result = await promisePool.query('SELECT * FROM wsk_cats');
-    console.log('result', result);
-    const rows = result[0];
+    const rows = await result[0];
     console.log('rows', rows);
+
+    // Set owner name to owner value in response
+    for (let row of rows) {
+      const user_id = row.owner;
+      const ownerResponse = await promisePool.query('SELECT name FROM wsk_users WHERE user_id = ?', [user_id]);
+
+      const ownerName = ownerResponse[0][0].name;
+      console.log('Owner name:');
+      console.log(ownerName);
+      row.owner = ownerName;
+
+    }
+
     return rows;
 };
 
 const findCatById = async (id) => {
     const [rows] = await promisePool.execute('SELECT * FROM wsk_cats WHERE cat_id = ?', [id]);
     console.log('rows', rows);
+
      if (rows.length === 0) {
         return false;
      }
+
+     const ownerId = rows[0].owner;
+     //console.log('owner id: ' + ownerId);
+
+     const ownerResponse = await promisePool.query('SELECT name FROM wsk_users WHERE user_id = ?', [ownerId]);
+     const ownerName = ownerResponse[0][0].name;
+
+     // Set owner name to owner value (to response, database is original)
+     rows[0].owner = ownerName;
+     console.log(ownerName);
+
      return rows[0];
 };
 
@@ -34,7 +58,8 @@ const addCat = async (cat) => {
      if (rows.affectedRows === 0) {
         return false;
      }
-    return {cat_id: rows.insertId};
+    //return {cat_id: rows.insertId};
+    return cat;
 };
 
 // TODO: tee nämä valmiiksi (cat-controlleriin?)

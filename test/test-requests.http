@@ -26,7 +26,7 @@ Content-Type: multipart/form-data; boundary=MyBoundary
 --MyBoundary
 Content-Disposition: form-data; name="cat_name"
 
-Muu
+Kissa Kissanen
 --MyBoundary
 Content-Disposition: form-data; name="weight"
 
@@ -34,7 +34,7 @@ Content-Disposition: form-data; name="weight"
 --MyBoundary
 Content-Disposition: form-data; name="owner"
 
-37
+1
 --MyBoundary
 Content-Disposition: form-data; name="birthdate"
 

@@ -1,7 +1,8 @@
 import {listAllCats, findCatById, addCat} from '../models/cat-model.js';
 
 const getCat = async (req, res) => {
-  res.json(await listAllCats());
+  const cats = await listAllCats()
+  res.json(cats);
 };
 
 // Get cat by id
