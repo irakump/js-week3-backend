@@ -7,7 +7,7 @@ GET http://localhost:3000/api/v1/cats
 GET http://localhost:3000/api/v1/cats/41
 
 ### Get cats by user id
-GET http://localhost:3000/api/v1/cats/user/48
+GET http://localhost:3000/api/v1/cats/user/37
 
 ### Post new cat without image
 POST http://localhost:3000/api/v1/cats
@@ -62,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Delete cat by id
-DELETE http://localhost:3000/api/v1/cats/37
+DELETE http://localhost:3000/api/v1/cats/61
 
 
 // User tests
@@ -98,4 +98,4 @@ Content-Type: application/json
 }
 
 ### Delete user by id
-DELETE http://localhost:3000/api/v1/users/50
+DELETE http://localhost:3000/api/v1/users/37
