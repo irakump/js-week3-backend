@@ -2,6 +2,7 @@ import express from 'express';
 import {
   getCat,
   getCatById,
+  getCatsByUserId,
   postCat,
   putCat,
   deleteCat,
@@ -16,6 +17,9 @@ const catRouter = express.Router();
 
 // Upload image
 catRouter.route('/').get(getCat).post(upload.single('file'), postCat);
+
+// Get cats by user id (all cats owned by user)
+catRouter.route('/user/:userId').get(getCatsByUserId).delete(deleteCat);
 
 // Get cat by id
 catRouter.route('/:id').get(getCatById).put(putCat).delete(deleteCat);

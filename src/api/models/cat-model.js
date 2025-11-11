@@ -47,6 +47,13 @@ const findCatById = async (id) => {
      return rows[0];
 };
 
+const findCatsByUserId = async (user_id) => {
+  const [rows] = await promisePool.query('SELECT * FROM wsk_cats WHERE owner = ?', [user_id]);
+
+  console.log(rows);
+  return rows;
+}
+
 const addCat = async (cat) => {
   const {cat_name, weight, owner, filename, birthdate} = cat;
   const sql = `INSERT INTO wsk_cats (cat_name, weight, owner, filename, birthdate)
@@ -83,4 +90,4 @@ const removeCat = async (id) => {
      return {message: 'success'};
 };
 
-export {listAllCats, findCatById, addCat, modifyCat, removeCat};
+export {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat};

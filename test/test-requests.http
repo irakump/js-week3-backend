@@ -6,6 +6,9 @@ GET http://localhost:3000/api/v1/cats
 ### Get cat by id
 GET http://localhost:3000/api/v1/cats/41
 
+### Get cats by user id
+GET http://localhost:3000/api/v1/cats/user/1
+
 ### Post new cat without image
 POST http://localhost:3000/api/v1/cats
 Content-Type: application/json
