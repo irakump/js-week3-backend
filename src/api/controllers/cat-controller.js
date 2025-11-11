@@ -18,7 +18,12 @@ const getCatById = async (req, res) => {
 const postCat = async (req, res) => {
   console.log('req.body =', req.body);
   console.log('req.file =', req.file);
-  console.log('req.file.filename=', req.file.filename);
+
+  if (req.file) {
+    console.log('req.file.filename=', req.file.filename);
+  } else {
+    console.log('Filename not found')
+  }
 
   // Salli kissan lisäys ilman kuvaa
   const newCat = req.body;
@@ -27,6 +32,7 @@ const postCat = async (req, res) => {
     newCat.filename = req.file.filename; // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
   } else if (!newCat.filename) {
     newCat.filename = null;
+    //newCat.filename = 'noFile';
   }
 
   const result = await addCat(req.body);
