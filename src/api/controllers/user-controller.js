@@ -1,4 +1,5 @@
 import {listAllUsers, findUserById, addUser, modifyUser, removeUser} from '../models/user-model.js';
+import {findCatById, findCatsByUserId, removeCat} from '../models/cat-model.js';
 
 const getUser = async (req, res) => {
   res.json(await listAllUsers());
@@ -40,10 +41,38 @@ const putUser = async (req, res) => {
 };
 
 // Delete user
-const deleteUser = (req, res) => {
-  // not implemented in this assignment
-  res.status(200);
-  res.json({message: 'User item deleted.'});
+const deleteUser = async (req, res) => {
+
+  // Test if user exists
+  const user = await findUserById(req.params.id);
+
+  if (user) {
+
+    // Remove cats owned by removed user
+    const catResult = await findCatsByUserId(req.params.id);
+    //console.log('catresult:');
+    //console.log(catResult);
+
+    if (catResult) {
+      for (let i = 0; i < catResult.length; i++) {
+        const catId = catResult[i].cat_id;
+        //console.log(catId);
+
+        const removedCatResult = await removeCat(catId);
+        console.log({message: 'Cat deleted', removedCatResult});
+      }
+
+
+    }
+
+    const result = await removeUser(req.params.id);
+
+    res.status(201);
+    res.json({message: 'User item deleted.', result});
+  } else {
+    res.sendStatus(400);
+  }
+
 };
 
 export {getUser, getUserById, postUser, putUser, deleteUser};

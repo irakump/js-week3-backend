@@ -7,7 +7,7 @@ GET http://localhost:3000/api/v1/cats
 GET http://localhost:3000/api/v1/cats/41
 
 ### Get cats by user id
-GET http://localhost:3000/api/v1/cats/user/1
+GET http://localhost:3000/api/v1/cats/user/48
 
 ### Post new cat without image
 POST http://localhost:3000/api/v1/cats
@@ -79,7 +79,7 @@ Content-Type: application/json
 
 {
   "name": "Joku",
-  "username": "joku",
+  "username": "joku1",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
@@ -98,4 +98,4 @@ Content-Type: application/json
 }
 
 ### Delete user by id
-DELETE http://localhost:3000/api/v1/users/1
+DELETE http://localhost:3000/api/v1/users/49

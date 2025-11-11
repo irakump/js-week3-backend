@@ -46,14 +46,26 @@ const modifyUser = async (user, id) => {
 };
 
 const removeUser = async (id) => {
-    const [rows] = await promisePool.execute('DELETE FROM wsk_cats WHERE cat_id = ?', [id]);
-    console.log('rows', rows);
 
-     if (rows.affectedRows === 0) {
+  // Get user first
+  const [rows] = await promisePool.execute('SELECT * from wsk_users WHERE user_id = ?', [id]);
+
+  // User does not exist
+  if (rows.length === 0) {
         return false;
      }
 
-     return {user_id: id};
+     // Save user
+  const userToRemove = rows[0];
+
+  const [result] = await promisePool.execute('DELETE FROM wsk_users WHERE user_id = ?', [id]);
+    console.log('result', result);
+
+     if (result.affectedRows === 0) {
+        return false;
+     }
+
+     return {user_id: userToRemove.user_id};
 };
 
 export {listAllUsers, findUserById, addUser, modifyUser, removeUser};

@@ -50,7 +50,11 @@ const findCatById = async (id) => {
 const findCatsByUserId = async (user_id) => {
   const [rows] = await promisePool.query('SELECT * FROM wsk_cats WHERE owner = ?', [user_id]);
 
-  console.log(rows);
+  if (rows.length === 0) {
+       return false;
+    }
+
+  //console.log(rows);
   return rows;
 }
 
