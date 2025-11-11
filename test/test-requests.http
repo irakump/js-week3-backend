@@ -62,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Delete cat by id
-DELETE http://localhost:3000/api/v1/cats/44
+DELETE http://localhost:3000/api/v1/cats/37
 
 
 // User tests
@@ -86,7 +86,7 @@ Content-Type: application/json
 }
 
 ### Modify user
-PUT http://localhost:3000/api/v1/users/39
+PUT http://localhost:3000/api/v1/users/37
 Content-Type: application/json
 
 {
@@ -98,4 +98,4 @@ Content-Type: application/json
 }
 
 ### Delete user by id
-DELETE http://localhost:3000/api/v1/users/49
+DELETE http://localhost:3000/api/v1/users/50
