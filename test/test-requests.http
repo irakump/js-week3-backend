@@ -21,9 +21,9 @@ Authorization: Bearer {{token}}
 
 // owner pitää olla olemassa (eli olemassa oleva user)
 {
-  "cat_name": "Mirri",
+  "cat_name": "Herra Hakkarainen",
   "weight": 5,
-  "owner": 37,
+  "owner": 1,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }
@@ -57,19 +57,19 @@ Content-Type: image/jpg
 --MyBoundary--
 
 ### Modify existing cat
-PUT http://localhost:3000/api/v1/cats/41
+PUT http://localhost:3000/api/v1/cats/70
 Content-Type: application/json
 
 {
   "cat_name": "Siiri Kissanen",
   "weight": 5,
-  "owner": 37,
+  "owner": 60,
   "filename": "f3dbafakjssssf4",
   "birthdate": "2020-10-12"
 }
 
 ### Delete cat by id
-DELETE http://localhost:3000/api/v1/cats/60
+DELETE http://localhost:3000/api/v1/cats/67
 
 
 // User tests
@@ -79,15 +79,15 @@ GET http://localhost:3000/api/v1/users
 Authorization: Bearer {{token}}
 
 ### Get user by id
-GET http://localhost:3000/api/v1/users/53
+GET http://localhost:3000/api/v1/users/1
 
 ### Post new user (username needs to be unique)
 POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "Uusi",
-  "username": "kissamainen",
+  "name": "Uusi Ihminen",
+  "username": "ihminen",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
@@ -123,7 +123,7 @@ Content-Type: application/json
 }
 
 ### Delete user by id
-DELETE http://localhost:3000/api/v1/users/52
+DELETE http://localhost:3000/api/v1/users/58
 
 ### Delete cat by user
-DELETE http://127.0.0.1:3000/api/v1/users/3609
+DELETE http://127.0.0.1:3000/api/v1/users/37
