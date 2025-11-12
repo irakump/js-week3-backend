@@ -9,8 +9,9 @@ const authenticateToken = (req, res, next) => {
   if (token == null) {
     return res.sendStatus(401);
   }
+
   try {
-    res.locals.user = jwt.verify(token, process.envJWT_SECRET);
+    res.locals.user = jwt.verify(token, process.env.JWT_SECRET);
     next();
   } catch (err) {
     console.error(err);

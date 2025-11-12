@@ -1,36 +1,16 @@
-import {listAllCats, findCatById, findCatsByUserId, addCat, modifyCat, removeCat} from '../models/cat-model.js';
+import {
+  listAllCats,
+  findCatById,
+  findCatsByUserId,
+  addCat,
+  modifyCat,
+  removeCat,
+} from '../models/cat-model.js';
 
 const getCat = async (req, res) => {
-  const cats = await listAllCats()
+  const cats = await listAllCats();
   res.json(cats);
 };
-
-const getMyCats = async (req, res) => {
-  const cats = await listCatsByUserId(res.locals.user.user_id);
-  res.json(cats);
-};
-
-const getCatsByUserId = async (req, res) => {
-  const cats = await listCatsByUserId(req.params.id);
-  res.json(cats);
-};
-
-const getMyCats = async (req, res) => {
-  const cats = await listCatsByUserId(res.locals.user.user_id);
-  res.json(cats);
-};
-
-// Get cats by user id
-const getCatsByUserId = async (req, res) => {
-  const cats = await findCatsByUserId(req.params.userId);
-
-  if (cats) {
-    res.json(cats);
-  } else {
-    res.sendStatus(404);
-  }
-
-}
 
 // Get cat by id
 const getCatById = async (req, res) => {
@@ -42,45 +22,30 @@ const getCatById = async (req, res) => {
   }
 };
 
-/*
-// Post cat
-const postCat = async (req, res) => {
-  //console.log('req.body =', req.//body);
-  //console.log('req.file =', req.//file);
-  //console.log('req.file.filename=', //req.file.filename);
+const getMyCats = async (req, res) => {
+  console.log('getting cats for', res.locals.user.user_id);
+  const cats = await findCatsByUserId(res.locals.user.user_id);
+  res.json(cats);
+};
 
-  // Allow cat without image
-  req.body.filename = req.file ? req.file.filename : req.body.filename || null;
+// Get cats by user id
+const getCatsByUserId = async (req, res) => {
+  const cats = await findCatsByUserId(req.params.id);
 
-
-  // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
-  //req.body.filename = req.file.filename;
-
-  const result = await addCat(req.body);
-  if (result.cat_id) {
-    res.status(201);
-    res.json({message: 'New cat added.', result});
+  if (cats) {
+    res.json(cats);
   } else {
-    res.sendStatus(400);
+    res.sendStatus(404);
   }
 };
-*/
 
 // Post new cat
 const postCat = async (req, res) => {
-  //console.log('req.body =', req.//body);
-  //console.log('req.file =', req.//file);
+  console.log('req.body =', req.body);
+  console.log('req.file =', req.file);
 
   if (req.file) {
-    //console.log('req.file.filename=', //req.file.filename);
-
-  const newCat = req.body;
-
-  // Allow cat without image
-  newCat.filename = req.file ? req.file.filename : newCat.filename || null;
-
-  // If authenticated user info is available
-  newCat.owner = res.locals.user?.user_id || req.body.owner;
+    console.log('req.file.filename=', req.file.filename);
   } else {
     console.log('Filename not found')
   }
@@ -90,7 +55,7 @@ const postCat = async (req, res) => {
 
   if (req.file) {
     newCat.filename = req.file.filename; // Lisää tiedostonimi req.bodyyn, jotta addCat saa kaikki tiedot
-  //} else if (!newCat.filename) {
+  } else if (!newCat.filename) {
     newCat.filename = null;
   }
 
@@ -105,36 +70,32 @@ const postCat = async (req, res) => {
 
 // Modify cat
 const putCat = async (req, res) => {
-
   const result = await modifyCat(req.body, req.params.id);
-    if (result) {
-      res.status(201);
+  if (result) {
+    res.status(201);
     res.json({message: 'Cat item updated.', result});
-    } else {
+  } else {
     res.sendStatus(400);
   }
-
 };
 
 // Delete cat
 const deleteCat = async (req, res) => {
-
   const result = await removeCat(req.params.id);
 
   if (result) {
-      res.status(201);
+    res.status(201);
     res.json({message: 'Cat item deleted.', result});
-    } else {
+  } else {
     res.sendStatus(400);
   }
-
 };
 
 export {
   getCat,
+  getCatById,
   getMyCats,
   getCatsByUserId,
-  getCatById,
   postCat,
   putCat,
   deleteCat,

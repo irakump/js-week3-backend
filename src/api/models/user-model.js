@@ -19,14 +19,13 @@ const findUserById = async (id) => {
 };
 
 const findUserByUsername = async (username) => {
-    const result = await promisePool.execute('SELECT * FROM wsk_users WHERE username = ?', [username]);
-    console.log('result', result);
-    const rows = result[0];
+    const [rows] = await promisePool.execute('SELECT * FROM wsk_users WHERE username = ?', [username]);
+    console.log('rows', rows);
 
      if (rows.length === 0) {
         return false;
      }
-     return rows;
+     return rows[0];  // return the first object (only one id searched)
 };
 
 const addUser = async (user) => {

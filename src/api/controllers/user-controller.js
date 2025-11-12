@@ -1,5 +1,6 @@
 import {listAllUsers, findUserById, addUser, modifyUser, removeUser} from '../models/user-model.js';
 import {findCatById, findCatsByUserId, removeCat} from '../models/cat-model.js';
+import bcrypt from 'bcrypt';
 
 const getUser = async (req, res) => {
   res.json(await listAllUsers());

@@ -25,7 +25,7 @@ app.get('/example/middleware',
     console.log('Olen middleware ja käsittelen dataa');
     next(); // Seuraava funktio
 },
-(req, res, next) => {
+(req, res) => {
     console.log('Moikka, pääsin loppuun asti');
     res.send('Tiedosto upattu ja käsitelty'); // Lähettää clientille tekstin
 }
