@@ -30,7 +30,7 @@ const postUser = async (req, res) => {
 
 // Modify user
 const putUser = async (req, res) => {
-
+  req.body.password = await bcrypt.hash(req.body.password, 10);
   const result = await modifyUser(req.body, req.params.id);
 
   if (result) {
