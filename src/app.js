@@ -1,5 +1,6 @@
 import express from 'express'
 import api from './api/index.js';
+import {notFoundHandler, errorHandler} from './middlewares/error-handlers.js';
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/v1', api);
 
 
-// Yksinkertainen middleware
+// Yksinkertainen middleware, esimerkki
 app.get('/example/middleware',
   (req, res, next) => {
     console.log('Moi olen täällä 1');
@@ -30,5 +31,9 @@ app.get('/example/middleware',
     res.send('Tiedosto upattu ja käsitelty'); // Lähettää clientille tekstin
 }
 );
+
+// If request does not match any of the routes above, use error handlers
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export default app;
