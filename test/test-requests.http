@@ -2,13 +2,13 @@
 
 // Token expires based on JWT_EXPIRES_IN value. Paste new token here when expired.
 // To get token: create new user, and post auth/login -> shows token
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1NSwibmFtZSI6IlV1c2kiLCJ1c2VybmFtZSI6InV1c2kiLCJlbWFpbCI6Im5ld0BtZXRyb3BvbGlhLmZpIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjI5NzU1MjgsImV4cCI6MTc2MzA2MTkyOH0.pCXn7IgKxJVd1HQm6Y__2LRIJkbB0MgIQRfsMt8A5Qs
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2MSwibmFtZSI6Ik5ldyIsInVzZXJuYW1lIjoibmV3VXNlciIsImVtYWlsIjoibmV3QG1ldHJvcG9saWEuZmkiLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzEwNTc4NiwiZXhwIjoxNzYzNzEwNTg2fQ.ZrQvUqrOtlPlmDoUb5bD7_PqJW2EKep-Q-JKYZX8xa8
 
 ### Get cats
 GET http://localhost:3000/api/v1/cats
 
 ### Get cat by id
-GET http://localhost:3000/api/v1/cats/41
+GET http://localhost:3000/api/v1/cats/65
 
 ### Get cats by user id
 GET http://localhost:3000/api/v1/cats/user/1
@@ -86,8 +86,8 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "name": "Uusi Ihminen",
-  "username": "ihminen",
+  "name": "New",
+  "username": "newUser",
   "email": "new@metropolia.fi",
   "role": "user",
   "password": "password1"
@@ -98,7 +98,7 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "username": "uusikuusi",
+  "username": "newUser",
   "password": "password1"
 }
 

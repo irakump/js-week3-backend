@@ -40,14 +40,17 @@ const getCatsByUserId = async (req, res) => {
 };
 
 // Post new cat
-const postCat = async (req, res) => {
+const postCat = async (req, res, next) => {
   console.log('req.body =', req.body);
   console.log('req.file =', req.file);
 
   if (req.file) {
     console.log('req.file.filename=', req.file.filename);
   } else {
-    console.log('Filename not found')
+    // Custom error
+    const error = new Error('Invalid or missing file');
+    error.status = 400;
+    next(error);  // throw error to next error handler
   }
 
   // Salli kissan lisäys ilman kuvaa

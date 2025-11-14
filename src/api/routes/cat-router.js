@@ -8,17 +8,16 @@ import {
   deleteCat,
   getMyCats
 } from '../controllers/cat-controller.js';
+import {upload} from '../../middlewares/upload.js';
 
 // Multer imports
-import multer from 'multer';
 import {authenticateToken} from '../../middlewares/authentication.js'
-const upload = multer({ dest: 'uploads/' });
 
 // Cat router
 const catRouter = express.Router();
 
 // Upload image
-catRouter.route('/').get(getCat).post(authenticateToken, upload.single('file'), postCat);
+catRouter.route('/').get(getCat).post(authenticateToken, upload.single('file'), postCat);   // use upload from upload.js
 
 // Get own cats
 catRouter.route('/user').get(authenticateToken, getMyCats);
