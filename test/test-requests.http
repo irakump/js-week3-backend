@@ -127,3 +127,48 @@ DELETE http://localhost:3000/api/v1/users/58
 
 ### Delete cat by user
 DELETE http://127.0.0.1:3000/api/v1/users/37
+
+### TEST ERROR HANDLER: Post user with empty request body
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+
+}
+
+### TEST ERROR HANDLER: Post cat with empty request body
+POST http://localhost:3000/api/v1/cats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+}
+
+### TEST ERROR HANDLER: Post cat with a text file (not image or video) -> error handler checks Content-Type: text/plain
+POST http://127.0.0.1:3000/api/v1/cats HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="cat_name"
+
+Kissa Koiranen
+--MyBoundary
+Content-Disposition: form-data; name="weight"
+
+6
+--MyBoundary
+Content-Disposition: form-data; name="owner"
+
+1
+--MyBoundary
+Content-Disposition: form-data; name="birthdate"
+
+2023-10-08
+--MyBoundary
+Content-Disposition: form-data; name="file"; filename="cat.txt"
+Content-Type: text/plain
+
+< ./cat.txt
+--MyBoundary--
