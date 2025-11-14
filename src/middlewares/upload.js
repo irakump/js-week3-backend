@@ -13,7 +13,7 @@ const upload = multer({
     if (file.mimetype.startsWith('image/') ||file.mimetype.startsWith('video/')) {
       cb(null, true);
     } else {
-      const error = new Error('Only images andvideos are allowed!');
+      const error = new Error('Only images and videos are allowed!');
       error.status = 400;
       cb(error, false);
     }
