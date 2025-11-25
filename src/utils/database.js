@@ -12,4 +12,11 @@ const pool = mysql.createPool({
 });
 
 const promisePool = pool.promise();
-export default promisePool;
+
+// function to close pool
+const closePool = async () => {
+  await promisePool.end();
+};
+
+export default promisePool; // voi säilyttää default exportin ja sen lisäksi exportata muita toisella rivillä
+export {closePool};
